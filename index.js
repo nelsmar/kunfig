@@ -4,7 +4,7 @@ var _ = require('lodash'),
 	path = require('path');
 
 // See if the user supplied a environment, if not use the default
-var defaultEnv = 'dev';
+var defaultEnv = 'development';
 var env = process.env.NODE_ENV || defaultEnv;
 
 function kunfig(dir) {
@@ -54,7 +54,7 @@ kunfig.prototype.loadConfig = function loadConfig() {
 
 				// If the file wasnt found lets toss an error explaining so
 				if(e.code === 'MODULE_NOT_FOUND') {
-					throw new Error('Unable to find default config file: ' + this.dir + ' ' + defaultEnv + '.js');
+					throw new Error('Unable to find default config file: ' + this.dir + defaultEnv + '.js');
 				} else {
 
 					// Otherwise throw the original error
