@@ -6,6 +6,10 @@
 	"keywords": [
 		"config"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nelsmar/kunfig"
+	},
 	"dependencies": {
 		"lodash": "~3.3.1"
 	}
