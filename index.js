@@ -15,10 +15,10 @@ function kunfig(dir) {
 	}
 
 	this.dir = dir;
-	this.configAll = this.loadEnv('all');
+	this.configDefault = this.loadEnv('default');
 }
 
-kunfig.prototype.configAll = {};
+kunfig.prototype.configDefault = {};
 
 var config = {};
 
@@ -27,9 +27,9 @@ var config = {};
 kunfig.prototype.loadEnv = function loadEnv(env) {
 
 	// Merge will deep merge any objects.
-	// The requested config will over-write any of the configAll properties
+	// The requested config will over-write any of the configDefault properties
 	return _.merge(
-		this.configAll,
+		this.configDefault,
 		require(this.dir + env) || {}
 	);
 }

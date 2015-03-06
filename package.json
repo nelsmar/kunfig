@@ -1,6 +1,6 @@
 {
 	"name": "kunfig",
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"description": "A minimlistic config loader",
 	"author": "Marin Nelson <marin@marinnelson.com>",
 	"keywords": [
