@@ -26,12 +26,25 @@ var config = {};
 // This will merge the "all.js" config with our current environment config
 kunfig.prototype.loadEnv = function loadEnv(env) {
 
-	// Merge will deep merge any objects.
-	// The requested config will over-write any of the configDefault properties
-	return _.merge(
-		this.configDefault,
-		require(this.dir + env) || {}
-	);
+	var config = require(this.dir+env) || {};
+
+	
+	// Merge will deep merge any objects
+	// The requested config will over-write any of the configDefault properties.
+	// If only one config has a property the final merge result will receive it regardless which config has it.
+	var tmpConfig = _.merge(this.configDefault,	config);
+
+	// If the config declares to not cascade the CSS assets (non-lib) ove-write the current property with the current config CSS
+	if(config.assetNoCascadeCss) {
+		tmpConfig.assets.css = config.assets.css;
+	}
+
+	// If the config declares to not cascade the js assets (non-lib) ove-write the current property with the current config js
+	if(config.assetNoCascadeJs) {
+		tmpConfig.assets.js = config.assets.js;
+	}
+
+	return tmpConfig;
 }
 
 kunfig.prototype.loadConfig = function loadConfig() {
